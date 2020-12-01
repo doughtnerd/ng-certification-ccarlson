@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Roboto';
+    src: url('http://fonts.googleapis.com/css?family=Roboto');
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+input {
+    border: none;
+    height: 32px;
+    border-radius: 4px;
+}
+button {
+    height: 32px;
+    outline: none;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input:focus {
+    outline:none;
+}
+
+
+.night-theme {
+    color: whitesmoke;
+
+    input {
+        color:white;
+        background: rgba(0,0,0,.33);
+    }
+
+    input:focus {
+        background: rgba(0,0,0,.66)
+    }
+
+    button {
+
+        &.primary {
+            background: #4364B7;
+            color: white;
+            border-radius: 4px;
+            
+            &:active {
+                background: #203377;
+            }
+        }
+    }
+}
