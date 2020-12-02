@@ -1,14 +1,21 @@
 <app-simple-background imageUrl="/assets/night-sky-vector.jpg"></app-simple-background>
 
-
-
 <div class="night-theme">
-  <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; width: 426px">
-    <span>Enter a Zip Code</span>
-    <input id="zip" name="zip" type="text" inputmode="numeric">
-  <button class="primary">Add City</button>
-  </div>
+  <app-add-zip-form></app-add-zip-form>
 
+  <div style="margin-top: 64px">
+    <app-weather-card-grid>
+      <app-weather-card></app-weather-card>
+      <app-weather-card></app-weather-card>
+      <app-weather-card></app-weather-card>
+      <app-weather-card></app-weather-card>
+      <app-weather-card></app-weather-card>
+      <app-weather-card></app-weather-card>
+      <app-weather-card></app-weather-card>
+      <app-weather-card></app-weather-card>
+      <app-weather-card></app-weather-card>
+    </app-weather-card-grid>
+  </div>
 
   <!-- {{(weatherData | async | json)}} -->
 </div>

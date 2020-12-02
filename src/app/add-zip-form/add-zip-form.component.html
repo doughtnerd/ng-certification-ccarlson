@@ -1,0 +1,9 @@
+<form (ngSubmit)="handleSubmit($event)" [formGroup]="form">
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; max-width: 426px">
+        <label for="zipCodeInput">
+            Enter a Zip Code
+        </label>
+        <input id="zipCodeInput" formControlName="zipCode" style="flex-grow: .5" id="zip" name="zip" type="text" inputmode="numeric">
+        <button type="submit" class="primary">Add City</button>
+    </div>
+</form>
