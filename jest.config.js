@@ -2,25 +2,25 @@ module.exports = {
   preset: "jest-preset-angular",
   globals: {
     "ts-jest": {
-      tsconfig: "<rootDir>/tsconfig.spec.json",
+      tsConfig: "<rootDir>/tsconfig.spec.json",
       stringifyContentPathRegex: "\\.html$",
-      astTransformers: {
-        before: [
-          "jest-preset-angular/build/InlineFilesTransformer",
-          "jest-preset-angular/build/StripStylesTransformer",
-        ],
-      },
+      astTransformers: [require.resolve("jest-preset-angular/InlineHtmlStripStylesTransformer")],
       diagnostics: true,
       isolatedModules: true,
     },
   },
-  // setupFilesAfterEnv: ["<rootDir>/jest/setup.ts"],
+  setupFilesAfterEnv: ["<rootDir>/jest/setup.ts"],
   transform: {
     "^.+\\.(ts|js|html)$": "ts-jest",
   },
   transformIgnorePatterns: ["node_modules/(?!@angular-mdc|@material)"],
-  testPathIgnorePatterns: [],
-  // testEnvironment: "jest-environment-jsdom-thirteen",
+  testPathIgnorePatterns: [
+    "<rootDir>/src/test.ts",
+    "<rootDir>/src/app/property-metadata.service.spec.ts",
+    "<rootDir>/src/app/operating-statement/",
+    "<rootDir>/src/app/component-library/spreadsheet/",
+  ],
+  testEnvironment: "jest-environment-jsdom-thirteen",
   moduleFileExtensions: ["ts", "html", "js", "json"],
   moduleNameMapper: {
     "^src/(.*)$": "<rootDir>/src/$1",
@@ -29,14 +29,8 @@ module.exports = {
     "^environments/(.*)$": "<rootDir>/src/environments/$1",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
-  snapshotSerializers: [
-    "jest-preset-angular/AngularSnapshotSerializer.js",
-    "jest-preset-angular/HTMLCommentSerializer.js",
-  ],
-  watchPlugins: [
-    "jest-watch-typeahead/filename",
-    "jest-watch-typeahead/testname",
-  ],
+  snapshotSerializers: ["jest-preset-angular/AngularSnapshotSerializer.js", "jest-preset-angular/HTMLCommentSerializer.js"],
+  watchPlugins: ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"],
   reporters: [
     "default",
     [
@@ -47,16 +41,16 @@ module.exports = {
     ],
   ],
   coverageDirectory: "./coverage",
-  collectCoverageFrom: [
-    "src/app/**/*.ts",
-    "!src/app/**/*.module.ts",
-    "!src/app/app.component.ts",
-  ],
+  collectCoverageFrom: ["src/app/**/*.ts", "!src/app/**/*.module.ts", "!src/app/app.component.ts"],
   coverageReporters: ["cobertura", "lcov", "json", "text"],
   coveragePathIgnorePatterns: [
     "/node_modules/",
     "<rootDir>/src/*.module.ts",
     "<rootDir>/src/app/app.component.ts",
+    "<rootDir>/src/app/shared/interceptors/fake-backend.interceptor.ts",
+    "<rootDir>/src/app/property-metadata.service.spec.ts",
+    "<rootDir>/src/app/operating-statement/",
+    "<rootDir>/src/app/component-library/spreadsheet/",
   ],
   coverageThreshold: {
     global: {
