@@ -1,56 +1,80 @@
 @font-face {
-    font-family: 'Roboto';
-    src: url('http://fonts.googleapis.com/css?family=Roboto');
+  font-family: "Roboto";
+  src: url("http://fonts.googleapis.com/css?family=Roboto");
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    padding-left: 16px;
-    padding-right: 16px;
+  font-family: "Roboto", sans-serif;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 input {
-    border: none;
-    height: 32px;
-    border-radius: 4px;
+  border: none;
+  height: 32px;
+  border-radius: 4px;
 }
 button {
-    height: 32px;
-    outline: none;
-    border: none;
+  height: 32px;
+  outline: none;
+  border: none;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 input:focus {
-    outline:none;
+  outline: none;
 }
 
-
 .night-theme {
-    color: whitesmoke;
+  color: whitesmoke;
 
-    input {
-        color:white;
-        background: rgba(0,0,0,.33);
-    }
+  input {
+    color: white;
+    background: rgba(0, 0, 0, 0.33);
+  }
 
-    input:focus {
-        background: rgba(0,0,0,.66)
-    }
+  input:focus {
+    background: rgba(0, 0, 0, 0.66);
+  }
 
-    button {
+  button {
+    &.primary {
+      background: #4364b7;
+      color: white;
+      border-radius: 4px;
 
-        &.primary {
-            background: #4364B7;
-            color: white;
-            border-radius: 4px;
-            
-            &:active {
-                background: #203377;
-            }
+      &:active {
+        background: #203377;
+      }
+
+      &.flat {
+        color: #4364b7;
+        background: transparent;
+
+        &:active {
+          color: #203377;
         }
+      }
     }
+
+    &.error {
+      background: rgb(228, 79, 79);
+
+      &:active {
+        background: rgb(130, 28, 28);
+      }
+
+      &.flat {
+        color: rgb(228, 79, 79);
+        background: transparent;
+
+        &:active {
+          color: rgb(130, 28, 28);
+        }
+      }
+    }
+  }
 }

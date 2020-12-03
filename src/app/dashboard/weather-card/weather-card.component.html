@@ -1,0 +1,29 @@
+<div class="weather-card">
+      
+    <div class="remove-button">
+      <button class="error flat" (click)="handleRemoveClick()">
+        <strong>X</strong>
+      </button>
+    </div>
+
+    <div class="content">
+
+      <h2>{{ weatherData.cityName }}</h2>
+
+      <div class="current-info">
+        <img [src]="currentWeatherIcon" class="icon">
+        <div class="statistics">
+          <span>{{ weatherData.condition }}</span>
+          <span>{{weatherData.currentTemperature}} {{units}}</span>
+        </div>
+      </div>
+
+      <div class="range-info">
+        <span>High: {{weatherData.maximumTemperature}} {{units}}</span>
+        <span>Low: {{weatherData.minimumTemperature}} {{units}}</span>
+      </div>
+
+      <a [routerLink]="['forecast', zipCode]" class="forecast-link">5-Day Forecast</a>
+
+    </div>
+</div>

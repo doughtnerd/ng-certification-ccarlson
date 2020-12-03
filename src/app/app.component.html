@@ -1,21 +1,3 @@
 <app-simple-background imageUrl="/assets/night-sky-vector.jpg"></app-simple-background>
 
-<div class="night-theme">
-  <app-add-zip-form></app-add-zip-form>
-
-  <div style="margin-top: 64px">
-    <app-weather-card-grid>
-      <app-weather-card></app-weather-card>
-      <app-weather-card></app-weather-card>
-      <app-weather-card></app-weather-card>
-      <app-weather-card></app-weather-card>
-      <app-weather-card></app-weather-card>
-      <app-weather-card></app-weather-card>
-      <app-weather-card></app-weather-card>
-      <app-weather-card></app-weather-card>
-      <app-weather-card></app-weather-card>
-    </app-weather-card-grid>
-  </div>
-
-  <!-- {{(weatherData | async | json)}} -->
-</div>
+<router-outlet></router-outlet>

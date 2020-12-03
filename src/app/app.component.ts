@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WeatherService } from './weather.service';
+import { WeatherAPIService } from './weather-api.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ export class AppComponent {
 
   public weatherData: any;
 
-  constructor(private weather: WeatherService) {
+  constructor(private weather: WeatherAPIService) {
     this.weatherData = this.weather.getCurrentWeatherData(84092);
   }
 }

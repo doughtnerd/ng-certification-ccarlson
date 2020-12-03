@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AddCityEvent } from './add-city-event.type';
+import { Subject } from 'rxjs';
+import { AddZipEvent } from './add-zip-event.type';
 
 @Component({
   selector: 'app-add-zip-form',
@@ -9,13 +10,11 @@ import { AddCityEvent } from './add-city-event.type';
 })
 export class AddZipFormComponent implements OnInit {
 
-  @Output() addCity: EventEmitter<AddCityEvent> = new EventEmitter<AddCityEvent>();
+  @Output() addZip: EventEmitter<AddZipEvent> = new EventEmitter<AddZipEvent>();
 
   public form: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder) {
-    console.error('HEY!!! ', this.fb);
-  }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -23,8 +22,8 @@ export class AddZipFormComponent implements OnInit {
     });
   }
 
-  public handleSubmit(event: FormGroup): void {
-    this.addCity.emit(event.value);
+  public handleSubmit(): void {
+    this.addZip.next(this.form.value);
     this.form.reset();
   }
 
