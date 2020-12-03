@@ -1,13 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { WeatherCardComponent } from './weather-card/weather-card.component';
-import { WeatherCardGridComponent } from './weather-card-grid/weather-card-grid.component';
-import { DashboardComponent } from './dashboard.component';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddZipFormComponent } from './add-zip-form/add-zip-form.component';
-
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardComponent } from './dashboard.component';
+import { TrackedWeatherService } from './tracked-weather.service';
+import { WeatherCardGridComponent } from './weather-card-grid/weather-card-grid.component';
+import { WeatherCardComponent } from './weather-card/weather-card.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +21,7 @@ import { AddZipFormComponent } from './add-zip-form/add-zip-form.component';
     ReactiveFormsModule,
     FormsModule,
   ],
+  providers: [TrackedWeatherService],
   exports: [DashboardComponent, DashboardRoutingModule]
 })
-export class DashboardModule { }
+export class DashboardModule {}

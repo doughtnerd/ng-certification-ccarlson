@@ -1,9 +1,7 @@
-<form (ngSubmit)="handleSubmit()" [formGroup]="form" data-testid="addZipForm">
-    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; max-width: 426px">
-        <label for="zipCodeInput">
-            Enter a Zip Code
-        </label>
-        <input id="zipCodeInput" formControlName="zipCode" style="flex-grow: .5" id="zip" name="zip" type="text" inputmode="numeric" data-testid="zipCodeInput">
-        <button [disabled]="!form.valid" type="submit" class="primary" data-testid="submitFormButton">Add City</button>
-    </div>
+<form (ngSubmit)="handleSubmit()" class="add-zip-form" [formGroup]="form" data-testid="addZipForm">
+    <label for="zipCodeInput">
+        Enter a Zip Code
+    </label>
+    <input id="zipCodeInput" formControlName="zipCode" style="flex-grow: .5" id="zip" name="zip" type="text" inputmode="numeric" data-testid="zipCodeInput">
+    <button [disabled]="!form.valid" type="submit" class="primary" data-testid="submitFormButton">Add City</button>
 </form>

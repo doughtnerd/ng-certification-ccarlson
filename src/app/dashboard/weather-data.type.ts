@@ -1,6 +1,6 @@
 export type WeatherData = {
     cityId: number;
-    zipCode: number
+    zipCode: string
     currentTemperature: number;
     minimumTemperature: number;
     maximumTemperature: number;
@@ -8,4 +8,5 @@ export type WeatherData = {
     conditionDescription: string;
     cityName: string;
     countryName: string;
+    icon: string;
 };

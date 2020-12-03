@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { SimpleBackgroundComponent } from './simple-background/simple-background.component';
+import { StorageService } from './storage.service';
 
 
 @NgModule({
@@ -18,7 +19,14 @@ import { SimpleBackgroundComponent } from './simple-background/simple-background
     HttpClientModule,
     DashboardModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: StorageService,
+      useFactory: () => {
+        return new StorageService(localStorage, (data) => JSON.stringify(data), data => JSON.parse(data));
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,9 @@
   background: rgba(0, 0, 0, 0.45);
   padding: 8px;
   box-sizing: border-box;
+
   max-width: 288px;
+  min-width: 288px;
 
   .remove-button {
     position: absolute;

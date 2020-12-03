@@ -12,7 +12,7 @@ export class WeatherCardComponent implements OnInit {
   @Input() public currentWeatherIcon = '/assets/sun.png';
   @Input() public units = 'F';
 
-  @Output() public remove: EventEmitter<number> = new EventEmitter<number>();
+  @Output() public remove: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
@@ -20,6 +20,6 @@ export class WeatherCardComponent implements OnInit {
   }
 
   public handleRemoveClick(): void {
-    this.remove.next(this.weatherData.cityId);
+    this.remove.next(this.weatherData.zipCode);
   }
 }

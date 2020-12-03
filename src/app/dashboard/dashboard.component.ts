@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { threadId } from 'worker_threads';
-import { TrackedZipsService } from '../tracked-zips.service';
-import { AddZipEvent } from './add-zip-form/add-zip-event.type';
-import { DashboardDataService } from './dashboard-data.service';
+import { AddZipEvent } from './_shared/add-zip-event.type';
+import { TrackedWeatherService } from './tracked-weather.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,17 +11,17 @@ export class DashboardComponent implements OnInit {
 
   public data$;
 
-  constructor(private trackedZips: TrackedZipsService, private data: DashboardDataService) { }
+  constructor(private trackedWeather: TrackedWeatherService) { }
 
   ngOnInit(): void {
-    this.data$ = this.data.dashboardData$;
+    this.data$ = this.trackedWeather.getAllTrackedWeatherData();
   }
 
   public handleAddZip(event: AddZipEvent): void {
-    this.trackedZips.addZipToTracking(event.zipCode);
+    this.trackedWeather.addZipToTracking(event.zipCode);
   }
 
-  public handleRemove(zipCode: number): void {
-    this.trackedZips.removeZipCode(zipCode);
+  public handleRemove(zipCode: string): void {
+    this.trackedWeather.removeZipFromTracking(zipCode);
   }
 }

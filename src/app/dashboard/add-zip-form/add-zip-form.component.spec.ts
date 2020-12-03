@@ -1,11 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, DebugElement, ElementRef } from '@angular/core';
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AddZipFormComponent } from './add-zip-form.component';
-import {cold, hot, time} from 'jest-marbles';
 
 describe('AddZipFormComponent', () => {
   let component: AddZipFormComponent;
@@ -53,7 +51,6 @@ describe('AddZipFormComponent', () => {
 
     const spy = jest.spyOn(component.addZip, 'next');
 
-    component.addZip.subscribe(data => console.log(data));
     formEl.nativeElement.dispatchEvent(new Event('submit'));
 
     fixture.detectChanges();

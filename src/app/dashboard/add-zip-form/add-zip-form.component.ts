@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { AddZipEvent } from './add-zip-event.type';
+import { AddZipEvent } from '../_shared/add-zip-event.type';
 
 @Component({
   selector: 'app-add-zip-form',

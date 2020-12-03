@@ -7,11 +7,5 @@ import { WeatherAPIService } from './weather-api.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-certification-ccarlson';
 
-  public weatherData: any;
-
-  constructor(private weather: WeatherAPIService) {
-    this.weatherData = this.weather.getCurrentWeatherData(84092);
-  }
 }
