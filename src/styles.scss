@@ -1,7 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
 
+@import "./themes/night.theme.scss";
+@import "./themes/day.theme.scss";
+
 body {
   font-family: "Roboto", sans-serif;
+  font-size: 1rem;
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -10,68 +14,18 @@ input {
   border: none;
   height: 32px;
   border-radius: 4px;
+
+  &:focus {
+    outline: none;
+  }
 }
+
 button {
   height: 32px;
   outline: none;
   border: none;
-}
 
-button:hover {
-  cursor: pointer;
-}
-
-input:focus {
-  outline: none;
-}
-
-.night-theme {
-  color: whitesmoke;
-
-  input {
-    color: white;
-    background: rgba(0, 0, 0, 0.33);
-  }
-
-  input:focus {
-    background: rgba(0, 0, 0, 0.66);
-  }
-
-  button {
-    &.primary {
-      background: #4364b7;
-      color: white;
-      border-radius: 4px;
-
-      &:active {
-        background: #203377;
-      }
-
-      &.flat {
-        color: #4364b7;
-        background: transparent;
-
-        &:active {
-          color: #203377;
-        }
-      }
-    }
-
-    &.error {
-      background: rgb(228, 79, 79);
-
-      &:active {
-        background: rgb(130, 28, 28);
-      }
-
-      &.flat {
-        color: rgb(228, 79, 79);
-        background: transparent;
-
-        &:active {
-          color: rgb(130, 28, 28);
-        }
-      }
-    }
+  &:hover {
+    cursor: pointer;
   }
 }

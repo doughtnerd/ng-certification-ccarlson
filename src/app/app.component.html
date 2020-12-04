@@ -1,3 +1,5 @@
-<app-simple-background imageUrl="/assets/night-sky-vector.jpg"></app-simple-background>
+<app-simple-background [imageUrl]="theming.themeBackground$ | async"></app-simple-background>
 
-<router-outlet></router-outlet>
+<div [class]="theming.themeClass$ | async">
+    <router-outlet></router-outlet>
+</div>

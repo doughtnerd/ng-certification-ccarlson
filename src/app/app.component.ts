@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TimeAwareThemingService } from './time-aware-theming.service';
 import { WeatherAPIService } from './weather-api.service';
 
 @Component({
@@ -8,4 +9,6 @@ import { WeatherAPIService } from './weather-api.service';
 })
 export class AppComponent {
 
+
+  constructor(public theming: TimeAwareThemingService) {}
 }

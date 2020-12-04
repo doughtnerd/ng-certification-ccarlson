@@ -1,16 +1,16 @@
-<div class="night-theme">
+
   <app-add-zip-form (addZip)="handleAddZip($event)"></app-add-zip-form>
 
-  <div style="margin-top: 64px">
-    <app-weather-card-grid>
+  <div style="margin-top: 32px">
+    <app-responsive-card-grid-list>
       <ng-container *ngFor="let weather of (data$ | async)">
 
-        <app-weather-card
+        <app-dashboard-card
+          [title]="weather.cityName"
           [weatherData]="weather"
           (remove)="handleRemove($event)"
-        ></app-weather-card>
+        ></app-dashboard-card>
 
       </ng-container>
-    </app-weather-card-grid>
+    </app-responsive-card-grid-list>
   </div>
-</div>

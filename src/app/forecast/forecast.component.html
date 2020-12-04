@@ -1,1 +1,13 @@
-<p>forecast works!</p>
+<div class="background-primary" style="display: flex; flex-direction: row; justify-content: center;">
+    <h1 class="text-primary">{{cityForecastData.cityName}} ({{cityForecastData.zipCode}}) - {{cityForecastData.forecast.length}} Day Forecast</h1>
+</div>
+
+<div style="margin-top: 32px">
+    <app-responsive-card-grid-list>
+    
+        <ng-container *ngFor="let forecast of cityForecastData.forecast">
+            <app-forecast-card [forecastData]="forecast"></app-forecast-card>
+        </ng-container>
+    
+    </app-responsive-card-grid-list>
+</div>

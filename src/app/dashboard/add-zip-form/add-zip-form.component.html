@@ -1,5 +1,5 @@
 <form (ngSubmit)="handleSubmit()" class="add-zip-form" [formGroup]="form" data-testid="addZipForm">
-    <label for="zipCodeInput">
+    <label class="text-primary" for="zipCodeInput">
         Enter a Zip Code
     </label>
     <input id="zipCodeInput" formControlName="zipCode" style="flex-grow: .5" id="zip" name="zip" type="text" inputmode="numeric" data-testid="zipCodeInput">

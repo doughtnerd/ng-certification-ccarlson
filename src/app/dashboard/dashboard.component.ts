@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AddZipEvent } from './_shared/add-zip-event.type';
 import { TrackedWeatherService } from './tracked-weather.service';
+import { Observable } from 'rxjs';
+import { WeatherData } from '../shared/weather-data.type';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +11,7 @@ import { TrackedWeatherService } from './tracked-weather.service';
 })
 export class DashboardComponent implements OnInit {
 
-  public data$;
+  public data$: Observable<WeatherData[]>;
 
   constructor(private trackedWeather: TrackedWeatherService) { }
 

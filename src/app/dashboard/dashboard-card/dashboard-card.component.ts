@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { WeatherData } from '../weather-data.type';
+import { WeatherData } from 'src/app/shared/weather-data.type';
 
 @Component({
-  selector: 'app-weather-card',
-  templateUrl: './weather-card.component.html',
-  styleUrls: ['./weather-card.component.scss']
+  selector: 'app-dashboard-card',
+  templateUrl: './dashboard-card.component.html',
+  styleUrls: ['./dashboard-card.component.scss']
 })
-export class WeatherCardComponent implements OnInit {
+export class DashboardCardComponent implements OnInit {
 
+  @Input() public title: string;
   @Input() public weatherData: WeatherData;
-  @Input() public currentWeatherIcon = '/assets/sun.png';
   @Input() public units = 'F';
 
   @Output() public remove: EventEmitter<string> = new EventEmitter<string>();

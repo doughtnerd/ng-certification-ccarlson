@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
+import { ForecastData } from '../shared/forecast-data.type';
 
 @Component({
   selector: 'app-forecast',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForecastComponent implements OnInit {
 
-  constructor() { }
+  public cityForecastData: ForecastData;
+
+  constructor(public router: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.cityForecastData = this.router.snapshot.data.forecast;
   }
 
 }

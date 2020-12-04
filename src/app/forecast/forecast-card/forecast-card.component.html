@@ -1,0 +1,21 @@
+<app-card>
+
+    <div class="content">
+
+      <h2>{{ forecastData.date }}</h2>
+
+      <div class="current-info">
+        <img [src]="forecastData.icon" class="icon">
+        <div class="statistics">
+          <span>{{ forecastData.condition }}</span>
+          <span>{{forecastData.currentTemperature}} {{units}}</span>
+        </div>
+      </div>
+
+      <div class="range-info">
+        <span>High: {{forecastData.maximumTemperature}} {{units}}</span>
+        <span>Low: {{forecastData.minimumTemperature}} {{units}}</span>
+      </div>
+    </div>
+
+</app-card>

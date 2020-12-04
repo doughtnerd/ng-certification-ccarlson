@@ -1,0 +1,60 @@
+.day-theme {
+  .text-primary {
+    color: black;
+  }
+
+  .background-primary {
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  input {
+    color: black;
+    background: rgba(255, 255, 255, 0.33);
+
+    &:focus {
+      background: rgba(255, 255, 255, 0.66);
+    }
+  }
+
+  button {
+    &.primary {
+      background: #477a3f;
+      color: white;
+      border-radius: 4px;
+
+      &:active {
+        background: #2d5028;
+      }
+
+      &.flat {
+        color: #477a3f;
+        background: transparent;
+
+        &:active {
+          color: #2d5028;
+        }
+      }
+    }
+
+    &.error {
+      background: rgb(228, 79, 79);
+
+      &:active {
+        background: rgb(130, 28, 28);
+      }
+
+      &.flat {
+        color: rgb(228, 79, 79);
+        background: transparent;
+
+        &:active {
+          color: rgb(130, 28, 28);
+        }
+      }
+    }
+  }
+
+  a {
+    color: #477a3f;
+  }
+}

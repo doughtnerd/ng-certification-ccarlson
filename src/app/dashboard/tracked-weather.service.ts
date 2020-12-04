@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, of, Subscription, zip } from 'rxjs';
 import { catchError, filter, map, mergeAll, mergeMap, toArray } from 'rxjs/operators';
 import { StorageService } from '../storage.service';
 import { WeatherAPIService } from '../weather-api.service';
-import { WeatherData } from './weather-data.type';
+import { WeatherData } from '../shared/weather-data.type';
 
 @Injectable()
 export class TrackedWeatherService implements OnDestroy {

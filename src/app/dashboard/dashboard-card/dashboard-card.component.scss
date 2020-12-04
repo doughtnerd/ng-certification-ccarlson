@@ -1,0 +1,36 @@
+.remove-button {
+  position: absolute;
+  top: 0px;
+  right: 8px;
+}
+
+.content {
+  display: grid;
+  grid-template-rows: 64px 80px 64px 32px;
+  justify-items: center;
+}
+
+.current-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+
+  .icon {
+    height: 100%;
+  }
+
+  .statistics {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.range-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  align-self: center;
+}

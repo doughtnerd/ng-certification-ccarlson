@@ -1,0 +1,1 @@
+export type UnitType = 'kelvin' | 'metric' | 'imperial';

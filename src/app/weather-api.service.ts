@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { WeatherData } from './dashboard/weather-data.type';
+import { ForecastData, ForecastDataItem } from './shared/forecast-data.type';
+import { UnitType } from './shared/unit.type';
+import { WeatherData } from './shared/weather-data.type';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class WeatherAPIService {
 
   constructor(private http: HttpClient) {}
 
-  public getCurrentWeatherData(zipCode: string, units: 'kelvin' | 'metric' | 'imperial' = 'imperial'): Observable<WeatherData> {
+  public getCurrentWeatherData(zipCode: string, units: UnitType = 'imperial'): Observable<WeatherData> {
     return this.http.get<any>(`${environment.apis.weatherApi}?zip=${zipCode}&appid=${environment.keys.weatherAppId}&units=${units}`).pipe(
       map(weatherApiData => {
         return {
@@ -25,13 +27,37 @@ export class WeatherAPIService {
           minimumTemperature: weatherApiData.main.temp_min,
           maximumTemperature: weatherApiData.main.temp_max,
           zipCode,
-          icon: this.mapIcon(weatherApiData.weather[0].main)
+          icon: this.mapConditionToIcon(weatherApiData.weather[0].main)
         } as WeatherData;
       }),
     );
   }
 
-  private mapIcon(main: string): string {
+  public getFiveDayForecast(zipCode: string, numberOfDays: number = 5, units: UnitType = 'imperial'): Observable<ForecastData> {
+    numberOfDays = Math.min(16, Math.max(1, numberOfDays));
+    return this.http.get<any>(`${environment.apis.forecastApi}?zip=${zipCode}&appid=${environment.keys.weatherAppId}&units=${units}&cnt=${numberOfDays}`).pipe(
+      map(response => {
+        return {
+          cityId: response.city.id,
+          cityName: response.city.name,
+          zipCode,
+          forecast: response.list.map(data => {
+            return {
+              condition: data.weather[0].main,
+              conditionDescription: data.weather[0].description,
+              currentTemperature: data.temp.day,
+              minimumTemperature: data.temp.min,
+              maximumTemperature: data.temp.max,
+              date: new Date(data.dt * 1000).toDateString(),
+              icon: this.mapConditionToIcon(data.weather[0].main)
+            } as ForecastDataItem;
+          })
+        } as ForecastData;
+      })
+    );
+  }
+
+  private mapConditionToIcon(main: string): string {
     const map = {
       '/assets/sun.png': ['Clear'],
       '/assets/snow.png': ['Snow'],
