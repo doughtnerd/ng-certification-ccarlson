@@ -1,14 +1,15 @@
 
-  <app-add-zip-form (addZip)="handleAddZip($event)"></app-add-zip-form>
+  <app-add-zip-form (addZip)="handleAddZip($event)" data-testid="zipCodeForm"></app-add-zip-form>
 
   <div style="margin-top: 32px">
-    <app-responsive-card-grid-list>
-      <ng-container *ngFor="let weather of (data$ | async)">
+    <app-responsive-card-grid-list data-testid="weatherDataList">
+      <ng-container *ngFor="let weather of (data$ | async); index as i">
 
         <app-dashboard-card
           [title]="weather.cityName"
           [weatherData]="weather"
           (remove)="handleRemove($event)"
+          data-testid="weatherItem"
         ></app-dashboard-card>
 
       </ng-container>

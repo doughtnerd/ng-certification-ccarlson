@@ -6,11 +6,12 @@ import { environment } from 'src/environments/environment';
 import { ForecastData, ForecastDataItem } from './shared/forecast-data.type';
 import { UnitType } from './shared/unit.type';
 import { WeatherData } from './shared/weather-data.type';
+import { IWeatherAPI } from './weather-api.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherAPIService {
+export class WeatherAPIService implements IWeatherAPI {
 
   constructor(private http: HttpClient) {}
 

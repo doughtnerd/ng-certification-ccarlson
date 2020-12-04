@@ -1,6 +1,6 @@
 <app-card>
     <div class="remove-button">
-        <button class="error flat" (click)="handleRemoveClick()">
+        <button class="error flat" (click)="handleRemoveClick()" data-testid="removeButton">
           <strong>x</strong>
         </button>
       </div>
@@ -10,19 +10,19 @@
         <h2>{{ title }}</h2>
   
         <div class="current-info">
-          <img [src]="weatherData.icon" class="icon">
+          <img [src]="weatherData.icon" class="icon" data-testid="weatherIcon">
           <div class="statistics">
-            <span>{{ weatherData.condition }}</span>
-            <span>{{weatherData.currentTemperature}} {{units}}</span>
+            <span data-testid="weatherCondition">{{ weatherData.condition }}</span>
+            <span data-testid="currentTemp">{{weatherData.currentTemperature}} {{units}}</span>
           </div>
         </div>
   
         <div class="range-info">
-          <span>High: {{weatherData.maximumTemperature}} {{units}}</span>
-          <span>Low: {{weatherData.minimumTemperature}} {{units}}</span>
+          <span data-testid="maxTemp">High: {{weatherData.maximumTemperature}} {{units}}</span>
+          <span data-testid="minTemp">Low: {{weatherData.minimumTemperature}} {{units}}</span>
         </div>
   
-        <a [routerLink]="['forecast', weatherData.zipCode]" [queryParams]="{numberOfDays: 5}" class="forecast-link">5-Day Forecast</a>
+        <a [routerLink]="['forecast', weatherData.zipCode]" [queryParams]="{numberOfDays: 5}" class="forecast-link" data-testid="goToForecast">5-Day Forecast</a>
   
       </div>
 </app-card>

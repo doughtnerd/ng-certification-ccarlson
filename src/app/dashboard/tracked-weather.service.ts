@@ -4,9 +4,10 @@ import { catchError, filter, map, mergeAll, mergeMap, toArray } from 'rxjs/opera
 import { StorageService } from '../storage.service';
 import { WeatherAPIService } from '../weather-api.service';
 import { WeatherData } from '../shared/weather-data.type';
+import { IWeatherTracker } from './weather-tracker.interface';
 
 @Injectable()
-export class TrackedWeatherService implements OnDestroy {
+export class TrackedWeatherService implements IWeatherTracker, OnDestroy {
 
   private trackedWeatherData$: Observable<WeatherData[]>;
 
@@ -16,7 +17,7 @@ export class TrackedWeatherService implements OnDestroy {
   private sub: Subscription;
 
   constructor(private weatherApi: WeatherAPIService, private storage: StorageService) {
-    this.trackedZipCodes = this.storage.getItem<string[]>('userZipCodes');
+    this.trackedZipCodes = this.storage.getItem<string[]>('userZipCodes') || [];
 
     this.trackedZipCodes$ = new BehaviorSubject(this.trackedZipCodes);
 
