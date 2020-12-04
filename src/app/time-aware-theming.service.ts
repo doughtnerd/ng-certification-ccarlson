@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, interval, merge, Observable } from 'rxjs';
-import { distinctUntilChanged, filter, map, mapTo, startWith, tap } from 'rxjs/operators';
+import { interval, merge, Observable } from 'rxjs';
+import { distinctUntilChanged, filter, map, mapTo, startWith } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
