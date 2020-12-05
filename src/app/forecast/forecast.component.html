@@ -1,6 +1,6 @@
 <div class="forecast-header background-primary">
-    <a routerLink="/"><h2>Back</h2></a>
-    <h2 class="text-primary">{{cityForecastData.cityName}} ({{cityForecastData.zipCode}}) - {{cityForecastData.forecast.length}} Day Forecast</h2>
+    <a routerLink="/" data-testid="backNavigation"><h2>Back</h2></a>
+    <h2 class="text-primary" data-testid="forecastTitle">{{cityForecastData.cityName}} ({{cityForecastData.zipCode}}) - {{cityForecastData.forecast.length}} Day Forecast</h2>
     <span></span>
 </div>
 
@@ -8,7 +8,7 @@
     <app-responsive-card-grid-list>
     
         <ng-container *ngFor="let forecast of cityForecastData.forecast">
-            <app-forecast-card [forecastData]="forecast"></app-forecast-card>
+            <app-forecast-card [forecastData]="forecast" data-testid="forecastItem"></app-forecast-card>
         </ng-container>
     
     </app-responsive-card-grid-list>

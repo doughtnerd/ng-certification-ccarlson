@@ -22,4 +22,16 @@ describe('StorageService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('Should serialize an array as a string', () => {
+    service.setItem('testItem', ['foo', 'bar']);
+    const item = localStorage.getItem('testItem');
+    expect(item).toEqual(JSON.stringify(['foo', 'bar']));
+  });
+
+  it('Should deserialize an stored array', () => {
+    service.setItem('testItem', ['foo', 'bar']);
+    const item = service.getItem('testItem');
+    expect(item).toEqual(['foo', 'bar']);
+  });
 });

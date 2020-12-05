@@ -1,4 +1,6 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { SimpleBackgroundComponent } from './simple-background.component';
 
@@ -16,10 +18,20 @@ describe('SimpleBackgroundComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SimpleBackgroundComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Should display the background', () => {
+    component.imageUrl = '/assets/day-sky-vector.jpg';
+
+    fixture.detectChanges();
+
+    const el: DebugElement = fixture.debugElement.query(By.css('[data-testid^=\'backgroundHost\']'));
+
+    expect(el.styles.backgroundImage).toEqual('url(/assets/day-sky-vector.jpg)');
   });
 });

@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-responsive-card-grid-list',
   templateUrl: './responsive-card-grid-list.component.html',
   styleUrls: ['./responsive-card-grid-list.component.scss']
 })
-export class ResponsiveCardGridListComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class ResponsiveCardGridListComponent {
 
 }

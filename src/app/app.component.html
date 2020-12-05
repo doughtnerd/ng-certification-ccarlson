@@ -1,5 +1,5 @@
-<app-simple-background [imageUrl]="theming.themeBackground$ | async"></app-simple-background>
+<app-simple-background [imageUrl]="theming.themeBackground$ | async" data-testid="backgroundElement"></app-simple-background>
 
-<div [class]="theming.themeClass$ | async">
+<div [class]="theming.themeClass$ | async" data-testid="themeHost">
     <router-outlet></router-outlet>
 </div>
