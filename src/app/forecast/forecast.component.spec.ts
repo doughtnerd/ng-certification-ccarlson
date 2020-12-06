@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, NgZone } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -21,13 +21,12 @@ const forecastData: ForecastData = {
       icon: 'http://assets/clouds.png',
       maximumTemperature: 70,
       minimumTemperature: 30,
-    }
-  ]
-  
+    },
+  ],
 };
 
 @Component({
-  template: '<div></div>'
+  template: '<div></div>',
 })
 class DummyComponent {}
 
@@ -35,15 +34,18 @@ describe('ForecastComponent', () => {
   let component: ForecastComponent;
   let fixture: ComponentFixture<ForecastComponent>;
   let location: Location;
+  let zone: NgZone;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForecastComponent, DummyComponent ],
-      imports: [RouterTestingModule.withRoutes([
+      declarations: [ForecastComponent, DummyComponent],
+      imports: [
+        RouterTestingModule.withRoutes([
           {
             path: '',
-            component: DummyComponent
-          }
-        ])
+            component: DummyComponent,
+          },
+        ]),
       ],
       providers: [
         {
@@ -51,22 +53,21 @@ describe('ForecastComponent', () => {
           useValue: {
             snapshot: {
               data: {
-                forecast: forecastData
-              }
-            }
-          }
-        }
+                forecast: forecastData,
+              },
+            },
+          },
+        },
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ForecastComponent);
     location = TestBed.inject(Location);
     component = fixture.componentInstance;
-    
+    zone = TestBed.inject(NgZone);
   });
 
   it('should create', () => {
@@ -76,7 +77,7 @@ describe('ForecastComponent', () => {
   it('Should display the correct forecasts', () => {
     fixture.detectChanges();
 
-    const els: DebugElement[] = fixture.debugElement.queryAll(By.css('[data-testid^=\'forecastItem\']'));
+    const els: DebugElement[] = fixture.debugElement.queryAll(By.css("[data-testid^='forecastItem']"));
     expect(els.length).toEqual(forecastData.forecast.length);
 
     els.forEach((item, index) => {
@@ -85,10 +86,11 @@ describe('ForecastComponent', () => {
   });
 
   it('Should navigate back when the back navigation is clicked', () => {
+    const el: DebugElement = fixture.debugElement.query(By.css("[data-testid^='backNavigation']"));
 
-    const el: DebugElement = fixture.debugElement.query(By.css('[data-testid^=\'backNavigation\']'));
-
-    el.nativeElement.click();
+    zone.run(() => {
+      el.nativeElement.click();
+    });
 
     fixture.detectChanges();
 

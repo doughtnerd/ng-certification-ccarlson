@@ -14,12 +14,7 @@ module.exports = {
     "^.+\\.(ts|js|html)$": "ts-jest",
   },
   transformIgnorePatterns: ["node_modules/(?!@angular-mdc|@material)"],
-  testPathIgnorePatterns: [
-    "<rootDir>/src/test.ts",
-    "<rootDir>/src/app/property-metadata.service.spec.ts",
-    "<rootDir>/src/app/operating-statement/",
-    "<rootDir>/src/app/component-library/spreadsheet/",
-  ],
+  testPathIgnorePatterns: [],
   testEnvironment: "jest-environment-jsdom-thirteen",
   moduleFileExtensions: ["ts", "html", "js", "json"],
   moduleNameMapper: {
@@ -43,15 +38,7 @@ module.exports = {
   coverageDirectory: "./coverage",
   collectCoverageFrom: ["src/app/**/*.ts", "!src/app/**/*.module.ts", "!src/app/app.component.ts"],
   coverageReporters: ["cobertura", "lcov", "json", "text"],
-  coveragePathIgnorePatterns: [
-    "/node_modules/",
-    "<rootDir>/src/*.module.ts",
-    "<rootDir>/src/app/app.component.ts",
-    "<rootDir>/src/app/shared/interceptors/fake-backend.interceptor.ts",
-    "<rootDir>/src/app/property-metadata.service.spec.ts",
-    "<rootDir>/src/app/operating-statement/",
-    "<rootDir>/src/app/component-library/spreadsheet/",
-  ],
+  coveragePathIgnorePatterns: ["/node_modules/", "<rootDir>/src/*.module.ts"],
   coverageThreshold: {
     global: {
       branches: 70,
