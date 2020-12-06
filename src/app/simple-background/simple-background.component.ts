@@ -1,26 +1,25 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Component({
-  selector: 'app-simple-background',
-  templateUrl: './simple-background.component.html',
-  styleUrls: ['./simple-background.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "app-simple-background",
+  templateUrl: "./simple-background.component.html",
+  styleUrls: ["./simple-background.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SimpleBackgroundComponent implements OnInit, OnChanges {
-
+export class SimpleBackgroundComponent implements OnChanges {
   @Input() public imageUrl: string;
 
   public backgroundImage$: Observable<string>;
 
-  public ngOnInit(): void {
-    this.backgroundImage$ = new BehaviorSubject<string>(this.imageUrl).pipe(map(url => `url(${url})`));
-  }
-
   public ngOnChanges(simpleChanges: SimpleChanges): void {
     if (simpleChanges.imageUrl) {
-      (this.backgroundImage$ as BehaviorSubject<string>).next(simpleChanges.imageUrl.currentValue);
+      if (simpleChanges.imageUrl.firstChange) {
+        this.backgroundImage$ = new BehaviorSubject<string>(simpleChanges.imageUrl.currentValue).pipe(map(url => `url(${url})`));
+      } else {
+        (this.backgroundImage$ as BehaviorSubject<string>).next(simpleChanges.imageUrl.currentValue);
+      }
     }
   }
 }
